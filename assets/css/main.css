@@ -1,0 +1,191 @@
+/* main.css — tokens, reset, base */
+
+/* Self-hosted fonts. Subset 'latin' (cubre os caracteres do galego). */
+@font-face {
+  font-family: 'Merriweather';
+  src: url('/assets/fonts/merriweather-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Open Sans';
+  src: url('/assets/fonts/opensans-variable.woff2') format('woff2');
+  /* Font variable: un único ficheiro cobre todo o rango de pesos. */
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Marca */
+  --cor-negro: #161616;
+  --cor-gris: #444444;
+  --cor-area: #cda34f;
+  --cor-oliva: #636B46;
+  --cor-verde-escuro: #373F27;
+
+  /* Derivadas funcionais */
+  --cor-fondo: #ffffff;
+  --cor-fondo-suave: #f7f6f1;
+  --cor-texto: var(--cor-negro);
+  --cor-texto-suave: var(--cor-gris);
+  --cor-borde: rgba(22, 22, 22, 0.12);
+
+  /* Semánticas */
+  --cor-positivo: var(--cor-verde-escuro);
+  --cor-positivo-fondo: rgba(55, 63, 39, 0.08);
+  --cor-prohibido: #a94442;
+  --cor-prohibido-fondo: rgba(169, 68, 66, 0.06);
+  --cor-aviso: var(--cor-area);
+
+  /* Tipografía */
+  --fonte-titular: 'Merriweather', Georgia, serif;
+  --fonte-corpo: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Radios e espazados */
+  --radio-s: 4px;
+  --radio-m: 8px;
+  --radio-l: 16px;
+  --radio-xl: 24px;
+
+  --espazo-xs: 4px;
+  --espazo-s: 8px;
+  --espazo-m: 16px;
+  --espazo-l: 24px;
+  --espazo-xl: 40px;
+  --espazo-xxl: 64px;
+
+  --contenedor-max: 640px;
+  --transicion: 200ms ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+/* Garantir que [hidden] gana sobre clases con display propio (.boton, etc.) */
+[hidden] { display: none !important; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  font-family: var(--fonte-corpo);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--cor-texto);
+  background: var(--cor-fondo);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--fonte-titular);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+
+p { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+
+a {
+  color: var(--cor-verde-escuro);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+a:hover, a:focus-visible { color: var(--cor-oliva); }
+
+button {
+  font-family: inherit;
+  font-size: 100%;
+}
+
+/* Outline só con teclado: no clic con rato, sen cadrado azul */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--cor-verde-escuro);
+  outline-offset: 3px;
+  border-radius: var(--radio-s);
+}
+
+/* Headings que recibimos focus programaticamente para anuncio en lectores
+   de pantalla. Non queremos cadrado visible cando entras a unha pantalla. */
+[tabindex="-1"]:focus,
+[tabindex="-1"]:focus-visible {
+  outline: none;
+}
+
+/* Layout de pantallas */
+.pantalla {
+  max-width: var(--contenedor-max);
+  margin: 0 auto;
+  padding: var(--espazo-l) var(--espazo-m);
+  padding-bottom: max(var(--espazo-l), env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: var(--espazo-l);
+  min-height: 100dvh;
+}
+/* `hidden` ten que gañar sobre o `display: flex` da .pantalla */
+.pantalla[hidden] { display: none; }
+
+.pantalla__cabeceira {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espazo-s);
+}
+.pantalla__cabeceira--centrada { text-align: center; align-items: center; }
+.pantalla__cabeceira--compacta {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--espazo-m);
+}
+.pantalla__cabeceira h2 {
+  font-size: clamp(1.5rem, 2vw + 1rem, 2rem);
+}
+
+.marca {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cor-texto-suave);
+  margin-top: var(--espazo-l);
+  margin-bottom: var(--espazo-l);
+}
+
+.subtitulo {
+  color: var(--cor-texto-suave);
+  font-size: 1rem;
+}
+
+.ligazon-suave {
+  color: var(--cor-texto-suave);
+}
+
+@media (min-width: 768px) {
+  .pantalla { padding: var(--espazo-xl) var(--espazo-l); }
+}
+
+/* Compactar lixeiramente en móbil */
+@media (max-width: 480px) {
+  body { font-size: 14.5px; }
+  .pantalla {
+    gap: var(--espazo-s);
+    padding: var(--espazo-s) var(--espazo-m);
+    padding-bottom: max(var(--espazo-m), env(safe-area-inset-bottom));
+  }
+  .pantalla__cabeceira { gap: var(--espazo-xs); }
+  .pantalla__cabeceira h2 {
+    font-size: 1.05rem;
+  }
+  .marca {
+    font-size: 0.72rem;
+  }
+}

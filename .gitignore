@@ -1,0 +1,36 @@
+# Credenciais e BBDD local
+/api/config.php
+/db/tabu.sqlite
+/db/tabu.sqlite-journal
+/db/tabu.sqlite-wal
+/db/tabu.sqlite-shm
+.env
+.env.*
+
+# Documentación interna e configuración persoal
+CLAUDE.md
+/.claude/
+
+# Editor/SO
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+
+# Sesións locais (php -S non as crea, pero por se acaso)
+/sessions/
+
+# Artefactos de probas con Playwright/Claude
+/.playwright-mcp/
+/m-*.png
+/d-*.png
+
+# Backups locais da BBDD
+/backup-*.sql
+
+# Dependencias (por se algún día)
+/node_modules/

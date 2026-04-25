@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#373F27">
+  <title>Tabú en galego · As Chaves da Lingua</title>
+  <meta name="description" content="Xoga ao Tabú en galego cos teus. Palabras normativas, niveis e categorías, ranking persistente.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23373F27'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='22' fill='%23cda34f' text-anchor='middle' font-weight='700'%3ET%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/screens.css">
+
+  <!-- Google Analytics (GA4) — propiedade propia de tabu.gal -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5766K3C7RH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    // Desactivamos o page_view automático: enviámolo nós desde app.js
+    // en cada cambio de pantalla (SPA con hash routes).
+    gtag('config', 'G-5766K3C7RH', { send_page_view: false });
+  </script>
+</head>
+<body data-pantalla-activa="home">
+
+  <main id="app" role="main">
+
+    <!-- HOME -->
+    <section class="pantalla pantalla--home" data-pantalla="home" aria-labelledby="home-titulo">
+      <header class="pantalla__cabeceira pantalla__cabeceira--centrada">
+        <h1 id="home-titulo" class="titulo-xogo">Tabú<span class="titulo-xogo__acento">en galego</span></h1>
+        <p class="subtitulo subtitulo--home">Xoga cos teus ao mítico xogo do Tabú, e faino en galego! Serás quen de adiviñalas todas?</p>
+      </header>
+      <nav class="home-acciones" aria-label="Menú principal">
+        <button type="button" class="boton boton--primario boton--grande boton--ancho" data-ir-a="setup">Comezar partida</button>
+        <button type="button" class="boton boton--secundario boton--ancho" data-accion="continuar-partida" hidden>Continuar partida</button>
+      </nav>
+      <footer class="home-rodape">
+        <nav class="home-rodape__menu" aria-label="Páxinas do sitio">
+          <a href="#como-se-xoga" class="ligazon-rodape" data-ir-a="como-se-xoga">Como se xoga</a>
+          <span class="home-rodape__sep" aria-hidden="true">·</span>
+          <a href="#ranking" class="ligazon-rodape" data-ir-a="ranking">Ranking</a>
+          <span class="home-rodape__sep" aria-hidden="true">·</span>
+          <a href="#legal" class="ligazon-rodape" data-ir-a="legal">Legal</a>
+          <span class="home-rodape__sep" aria-hidden="true">·</span>
+          <span class="home-rodape__version">v1.0</span>
+        </nav>
+        <p class="autoria">xogo por <a href="https://aschavesdalingua.gal" target="_blank" rel="noopener" class="ligazon-autoria">As Chaves da Lingua</a></p>
+      </footer>
+    </section>
+
+    <!-- SETUP -->
+    <section class="pantalla pantalla--setup" data-pantalla="setup" aria-labelledby="setup-titulo" hidden>
+      <header class="pantalla__cabeceira pantalla__cabeceira--compacta">
+        <button type="button" class="boton-volver" data-ir-a="home" aria-label="Volver ao inicio">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+          </button>
+        <h2 id="setup-titulo">Configurar partida</h2>
+      </header>
+
+      <form class="formulario-setup" onsubmit="return false">
+
+        <fieldset class="campo-grupo">
+          <legend>Equipos</legend>
+          <div class="chip-grupo" role="radiogroup">
+            <label class="chip"><input type="radio" name="equipos" value="2"><span>2</span></label>
+            <label class="chip"><input type="radio" name="equipos" value="3" checked><span>3</span></label>
+            <label class="chip"><input type="radio" name="equipos" value="4"><span>4</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="campo-grupo">
+          <legend>Segundos por quenda</legend>
+          <div class="chip-grupo" role="radiogroup">
+            <label class="chip"><input type="radio" name="segundos" value="60"><span>60 s</span></label>
+            <label class="chip"><input type="radio" name="segundos" value="90" checked><span>90 s</span></label>
+            <label class="chip"><input type="radio" name="segundos" value="120"><span>120 s</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="campo-grupo">
+          <legend>Roldas</legend>
+          <div class="chip-grupo" role="radiogroup">
+            <label class="chip"><input type="radio" name="obxectivo" value="3"><span>3</span></label>
+            <label class="chip"><input type="radio" name="obxectivo" value="5" checked><span>5</span></label>
+            <label class="chip"><input type="radio" name="obxectivo" value="10"><span>10</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="campo-grupo">
+          <legend>Dificultade</legend>
+          <div class="chip-grupo" role="radiogroup">
+            <label class="chip"><input type="radio" name="nivel" value="mesturado" checked><span>De todos os niveis</span></label>
+            <label class="chip is-deshabilitada" aria-disabled="true" title="Próximamente"><input type="radio" name="nivel" value="facil" disabled><span>Sinxelo (en breve)</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="campo-grupo">
+          <legend>Organizador (opcional)</legend>
+          <input type="text" class="entrada-texto" name="organizador" placeholder="O teu nome" maxlength="60" autocomplete="off">
+        </fieldset>
+
+        <button type="button" class="boton boton--primario boton--grande boton--ancho" data-accion="empezar-partida">
+          Empezar partida
+        </button>
+      </form>
+    </section>
+
+    <!-- PLAY -->
+    <section class="pantalla pantalla--play" data-pantalla="play" aria-labelledby="play-palabra" hidden>
+      <header class="xogo-cabeceira">
+        <div class="barra-tempo" aria-hidden="true">
+          <div class="barra-tempo__enchida" style="width: 70%"></div>
+        </div>
+        <div class="xogo-meta">
+          <span class="xogo-meta__tempo" aria-live="polite" aria-label="Tempo restante">0:42</span>
+          <span class="xogo-meta__equipo">Equipo 1 · <strong>5</strong> pts</span>
+          <span class="xogo-meta__saltos">Saltos: 2</span>
+          <button type="button" class="xogo-meta__son" data-accion="alternar-son" aria-label="Activar ou desactivar son" aria-pressed="false">
+            <svg class="xogo-meta__son-icona xogo-meta__son-icona--on" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a4 4 0 0 1 0 7"/><path d="M19 5a8 8 0 0 1 0 14"/></svg>
+            <svg class="xogo-meta__son-icona xogo-meta__son-icona--off" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"/><line x1="22" y1="9" x2="16" y2="15"/><line x1="16" y1="9" x2="22" y2="15"/></svg>
+          </button>
+          <button type="button" class="xogo-meta__rematar" data-accion="rematar-desde-play" aria-label="Rematar partida">✕</button>
+        </div>
+      </header>
+
+      <article class="tarxeta-palabra">
+        <button type="button" class="tarxeta-palabra__reporte" data-accion="abrir-reporte" aria-label="Reportar problema con esta palabra">
+          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><circle cx="12" cy="17" r="0.6" fill="currentColor"/></svg>
+        </button>
+        <p class="tarxeta-palabra__nivel">fácil · natureza</p>
+        <h2 id="play-palabra" class="tarxeta-palabra__principal">Carballo</h2>
+        <ul class="lista-prohibidas" aria-label="Palabras prohibidas">
+          <li>árbore</li>
+          <li>bosque</li>
+          <li>folla</li>
+          <li>madeira</li>
+          <li>fraga</li>
+        </ul>
+      </article>
+
+      <nav class="xogo-acciones" aria-label="Accións de quenda">
+        <button type="button" class="boton-accion boton-accion--saltar" data-accion="saltar">
+          <span class="boton-accion__icona" aria-hidden="true">→</span>
+          <span>Saltar</span>
+        </button>
+        <button type="button" class="boton-accion boton-accion--anular" data-accion="anular">
+          <span class="boton-accion__icona" aria-hidden="true">⊘</span>
+          <span>Anular</span>
+        </button>
+        <button type="button" class="boton-accion boton-accion--acerto" data-accion="acerto">
+          <span class="boton-accion__icona" aria-hidden="true">✓</span>
+          <span>Acerto</span>
+        </button>
+      </nav>
+    </section>
+
+    <!-- TURN-END -->
+    <section class="pantalla pantalla--turn-end" data-pantalla="turn-end" aria-labelledby="turn-end-titulo" hidden>
+      <header class="pantalla__cabeceira">
+        <h2 id="turn-end-titulo">Fin da quenda</h2>
+        <p class="subtitulo">Equipo 1</p>
+      </header>
+
+      <div class="resumo-quenda">
+        <div class="resumo-quenda__marcador">
+          <span class="resumo-quenda__puntos">+4</span>
+          <span class="resumo-quenda__etiqueta">puntos nesta quenda</span>
+        </div>
+        <ul class="lista-resumo">
+          <li class="lista-resumo__item lista-resumo__item--acerto">
+            <span class="lista-resumo__icona" aria-hidden="true">✓</span>
+            <span>Carballo</span>
+          </li>
+          <li class="lista-resumo__item lista-resumo__item--acerto">
+            <span class="lista-resumo__icona" aria-hidden="true">✓</span>
+            <span>Polbo</span>
+          </li>
+          <li class="lista-resumo__item lista-resumo__item--prohibida">
+            <span class="lista-resumo__icona" aria-hidden="true">✗</span>
+            <span>Gaita</span>
+          </li>
+          <li class="lista-resumo__item lista-resumo__item--acerto">
+            <span class="lista-resumo__icona" aria-hidden="true">✓</span>
+            <span>Morriña</span>
+          </li>
+          <li class="lista-resumo__item lista-resumo__item--saltada">
+            <span class="lista-resumo__icona" aria-hidden="true">→</span>
+            <span>Brétema</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="turn-end-acciones">
+        <button type="button" class="boton boton--primario boton--grande boton--ancho" data-accion="seguinte-equipo">
+          Seguinte equipo
+        </button>
+        <button type="button" class="boton boton--fantasma boton--ancho" data-accion="rematar-partida">
+          Rematar partida
+        </button>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section class="pantalla pantalla--results" data-pantalla="results" aria-labelledby="results-titulo" hidden>
+      <header class="pantalla__cabeceira">
+        <h2 id="results-titulo">Fin da partida</h2>
+        <p class="subtitulo">Parabéns, Equipo 1!</p>
+      </header>
+
+      <ol class="podio" aria-label="Clasificación final">
+        <li class="podio__posto podio__posto--primeiro">
+          <span class="podio__num">1</span>
+          <span class="podio__nome">Equipo 1</span>
+          <span class="podio__puntos">20 pts</span>
+        </li>
+        <li class="podio__posto">
+          <span class="podio__num">2</span>
+          <span class="podio__nome">Equipo 2</span>
+          <span class="podio__puntos">15 pts</span>
+        </li>
+        <li class="podio__posto">
+          <span class="podio__num">3</span>
+          <span class="podio__nome">Equipo 3</span>
+          <span class="podio__puntos">11 pts</span>
+        </li>
+      </ol>
+
+      <dl class="stats-partida">
+        <div><dt>Acertos</dt><dd>0</dd></div>
+        <div><dt>Saltos</dt><dd>0</dd></div>
+        <div><dt>Duración</dt><dd>0 min</dd></div>
+      </dl>
+
+      <div class="ranking-consentimento" data-zona="ranking-consentimento">
+        <label class="ranking-consentimento__label">
+          <input type="checkbox" class="ranking-consentimento__check" data-zona="ranking-check">
+          <span>Gardar este resultado no ranking público</span>
+        </label>
+        <button type="button" class="ranking-consentimento__boton" data-accion="enviar-ranking" disabled>Gardar</button>
+        <p class="ranking-consentimento__estado" data-zona="ranking-estado" role="status" aria-live="polite"></p>
+      </div>
+
+      <nav class="results-acciones" aria-label="Accións finais">
+        <button type="button" class="boton boton--primario boton--ancho" data-accion="nova-partida">Xogar outra vez</button>
+        <button type="button" class="boton boton--fantasma boton--ancho" data-ir-a="ranking">Ver ranking público</button>
+        <button type="button" class="boton boton--secundario boton--ancho" data-accion="volver-home">Volver ao inicio</button>
+      </nav>
+    </section>
+
+    <!-- LEGAL -->
+    <section class="pantalla pantalla--legal" data-pantalla="legal" aria-labelledby="legal-titulo" hidden>
+      <header class="pantalla__cabeceira pantalla__cabeceira--compacta">
+        <button type="button" class="boton-volver" data-ir-a="home" aria-label="Volver ao inicio">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+        </button>
+        <h2 id="legal-titulo">Aviso legal e privacidade</h2>
+      </header>
+
+      <section class="legal-bloque">
+        <h3>Privacidade</h3>
+        <p>Esta web non require rexistro nin solicita datos persoais. Cando gardas unha partida no ranking público, almacénase o nome dos equipos e, opcionalmente, o nome do organizador que ti escribas. Nada máis.</p>
+        <p>Para evitar que o ranking se enche de spam usamos un identificador técnico anónimo (hash da IP + navegador) que non permite identificarte. Pódese rotar e invalidar en calquera momento.</p>
+      </section>
+
+      <section class="legal-bloque">
+        <h3>Cookies e analítica</h3>
+        <p>Empregamos as seguintes cookies:</p>
+        <ul class="legal-lista">
+          <li><strong>tabu_sid</strong> (técnica): cookie de sesión para protexer o envío de partidas. Necesaria para que o xogo funcione. Non é de seguimento.</li>
+          <li><strong>_ga, _ga_5766K3C7RH</strong> (Google Analytics): permítennos saber cantas persoas xogan e que pantallas usan, para mellorar o servizo. Os datos envíanse anonimizados a Google.</li>
+        </ul>
+        <p>Se non queres que se envíen datos a Google Analytics podes activar o modo "Non rastrexar" do teu navegador, usar un bloqueador como uBlock Origin, ou non visitar esta web. Non temos un panel propio para opt-out.</p>
+      </section>
+
+      <section class="legal-bloque">
+        <h3>Licenzas</h3>
+        <ul class="legal-lista">
+          <li><strong>Base léxica</strong> (palabras e prohibidas): CC BY-NC 4.0.</li>
+          <li><strong>Código fonte</strong>: GPL-3.0. Dispoñible en <a href="https://github.com/sanchezanxo/tabu-en-galego" target="_blank" rel="noopener">github.com/sanchezanxo/tabu-en-galego</a>.</li>
+          <li><strong>Tipografías</strong>: Merriweather e Open Sans, ambas Open Font License.</li>
+        </ul>
+      </section>
+
+      <section class="legal-bloque">
+        <h3>Contacto e autoría</h3>
+        <p>Tabú en galego é un xogo creado por <a href="https://aschavesdalingua.gal" target="_blank" rel="noopener">As Chaves da Lingua</a>. Para reportar erros nas palabras usa o iconiño ⚠ na propia carta durante o xogo.</p>
+      </section>
+    </section>
+
+    <!-- COMO SE XOGA -->
+    <section class="pantalla pantalla--como-xogar" data-pantalla="como-se-xoga" aria-labelledby="como-titulo" hidden>
+      <header class="pantalla__cabeceira pantalla__cabeceira--compacta">
+        <button type="button" class="boton-volver" data-ir-a="home" aria-label="Volver ao inicio">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+        </button>
+        <h2 id="como-titulo">Como se xoga</h2>
+      </header>
+
+      <ol class="como-pasos">
+        <li class="como-paso">
+          <span class="como-paso__num">1</span>
+          <div class="como-paso__corpo">
+            <h3>Forma equipos</h3>
+            <p>De 2 a 4 equipos. Cada equipo xoga por quendas. Nunha quenda, unha persoa describe e o resto do seu equipo intenta adiviñar. Na seguinte quenda, cambia quen describe.</p>
+            <p>Se xogades só 2 persoas, unha describe e a outra adiviña en cada quenda.</p>
+          </div>
+        </li>
+
+        <li class="como-paso">
+          <span class="como-paso__num">2</span>
+          <div class="como-paso__corpo">
+            <h3>Obxectivo do xogo</h3>
+            <p>Fai que o teu equipo adiviñe a palabra principal de cada carta antes de que remate o tempo.</p>
+          </div>
+        </li>
+
+        <li class="como-paso">
+          <span class="como-paso__num">3</span>
+          <div class="como-paso__corpo">
+            <h3>Describe sen dicir as prohibidas</h3>
+            <p>Cada carta ten unha palabra principal e cinco palabras prohibidas. Tes que describir a principal sen dicir ningunha das prohibidas nin palabras derivadas (mesma raíz, plural, diminutivos, etc.).</p>
+            <p>Non se permite:</p>
+            <ul class="como-paso__lista">
+              <li>Dicir partes da palabra</li>
+              <li>Traducila a outro idioma</li>
+              <li>Usar sons ou xestos que a delaten directamente</li>
+            </ul>
+            <p>Se cometes un erro, a carta queda invalidada.</p>
+          </div>
+        </li>
+
+        <li class="como-paso">
+          <span class="como-paso__num">4</span>
+          <div class="como-paso__corpo">
+            <h3>Quenda de xogo</h3>
+            <p>Cando comeza a quenda:</p>
+            <ul class="como-paso__lista">
+              <li>Activa o tempo</li>
+              <li>Describe tantas palabras como poidas</li>
+              <li>O teu equipo pode facer varios intentos</li>
+            </ul>
+            <p>Se acertan, pasas á seguinte carta. Se decides saltar, pasas á seguinte pero consumes un salto (máx. 3 por quenda). Cando remata o tempo, acaba a quenda e pasa ao seguinte equipo.</p>
+          </div>
+        </li>
+
+        <li class="como-paso">
+          <span class="como-paso__num">5</span>
+          <div class="como-paso__corpo">
+            <h3>Puntuación</h3>
+            <ul class="como-paso__lista">
+              <li>Cada acerto: <strong>+1 punto</strong></li>
+              <li>Saltar: <strong>0 puntos</strong></li>
+              <li>Carta invalidada por erro: <strong>0 puntos</strong></li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="como-paso">
+          <span class="como-paso__num">6</span>
+          <div class="como-paso__corpo">
+            <h3>Fin da partida</h3>
+            <p>A partida remata ao completar o número de roldas acordado (3, 5 ou 10). Gaña o equipo con máis puntos. En caso de empate, gañan todos os equipos empatados.</p>
+          </div>
+        </li>
+
+        <li class="como-paso">
+          <span class="como-paso__num">7</span>
+          <div class="como-paso__corpo">
+            <h3>Normas adicionais</h3>
+            <ul class="como-paso__lista">
+              <li>O xogo úsase nun único dispositivo móbil</li>
+              <li>Só a persoa que describe pode ver a pantalla (palabra principal e prohibidas)</li>
+              <li>O dispositivo debe estar orientado cara á persoa que describe</li>
+              <li>O resto do equipo non pode mirar nin ver as palabras en ningún momento da quenda</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+
+      <button type="button" class="boton boton--primario boton--grande boton--ancho" data-ir-a="setup">Comezar partida</button>
+    </section>
+
+    <!-- RANKING -->
+    <section class="pantalla pantalla--ranking" data-pantalla="ranking" aria-labelledby="ranking-titulo" hidden>
+      <header class="pantalla__cabeceira pantalla__cabeceira--compacta">
+        <button type="button" class="boton-volver" data-ir-a="home" aria-label="Volver ao inicio">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+          </button>
+        <h2 id="ranking-titulo">Ranking e estatísticas</h2>
+      </header>
+
+      <div class="chip-grupo chip-grupo--filtros" role="tablist" aria-label="Período do ranking">
+        <button type="button" class="chip chip--boton is-activo" data-periodo="semana" role="tab" aria-selected="true">Semana</button>
+        <button type="button" class="chip chip--boton" data-periodo="mes" role="tab" aria-selected="false">Mes</button>
+        <button type="button" class="chip chip--boton" data-periodo="todo" role="tab" aria-selected="false">Todo</button>
+      </div>
+
+      <ol class="ranking-lista" data-zona="ranking-lista" aria-label="Mellores equipos"></ol>
+
+      <section class="stats-bloque" aria-labelledby="stats-titulo">
+        <h3 id="stats-titulo" class="stats-bloque__titulo">Estatísticas globais</h3>
+        <p class="stats-bloque__resumen" data-zona="stats-resumen"></p>
+
+        <div class="stats-bloque__grupo">
+          <h4>Palabras máis acertadas</h4>
+          <div data-zona="stats-mais-acertadas"></div>
+        </div>
+        <div class="stats-bloque__grupo">
+          <h4>Palabras que custan máis</h4>
+          <div data-zona="stats-menos-acertadas"></div>
+        </div>
+      </section>
+
+      <p class="ranking-mensaxe" data-zona="ranking-mensaxe" role="status" aria-live="polite"></p>
+    </section>
+
+  </main>
+
+  <dialog class="dialogo dialogo--reporte" id="dialogo-reporte" aria-labelledby="dialogo-reporte-titulo">
+    <div class="dialogo__corpo">
+      <h3 class="dialogo__titulo" id="dialogo-reporte-titulo">Reportar palabra</h3>
+      <p class="dialogo__palabra" data-zona="reporte-palabra"></p>
+      <p class="dialogo__pregunta">Que problema ten?</p>
+      <div class="dialogo__motivos">
+        <button type="button" class="dialogo__motivo" data-motivo="ortografia">Está mal escrita</button>
+        <button type="button" class="dialogo__motivo" data-motivo="prohibidas">Algunha prohibida non é correcta</button>
+        <button type="button" class="dialogo__motivo" data-motivo="dificultade">Dificultade incorrecta</button>
+        <button type="button" class="dialogo__motivo" data-motivo="outro">Outro problema</button>
+      </div>
+      <p class="dialogo__estado" data-zona="reporte-estado" role="status" aria-live="polite"></p>
+      <div class="dialogo__acciones">
+        <button type="button" class="boton boton--fantasma" data-accion="pechar-reporte">Pechar</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script type="module" src="/assets/js/app.js"></script>
+</body>
+</html>

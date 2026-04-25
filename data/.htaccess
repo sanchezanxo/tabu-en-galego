@@ -1,0 +1,6 @@
+# Permitir só GET (LimitExcept non é fiable en LiteSpeed).
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_METHOD} !^GET$
+  RewriteRule .* - [F,L]
+</IfModule>
