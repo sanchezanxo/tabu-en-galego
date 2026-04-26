@@ -11,15 +11,15 @@
   <link rel="stylesheet" href="/assets/css/components.css">
   <link rel="stylesheet" href="/assets/css/screens.css">
 
-  <!-- Google Analytics (GA4) — propiedade propia de tabu.gal -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5766K3C7RH"></script>
+  <!-- Google Analytics (GA4) — substitúe G-XXXXXXXXXX polo teu Measurement ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     // Desactivamos o page_view automático: enviámolo nós desde app.js
     // en cada cambio de pantalla (SPA con hash routes).
-    gtag('config', 'G-5766K3C7RH', { send_page_view: false });
+    gtag('config', 'G-XXXXXXXXXX', { send_page_view: false });
   </script>
 </head>
 <body data-pantalla-activa="home">
@@ -269,7 +269,7 @@
         <p>Empregamos as seguintes cookies:</p>
         <ul class="legal-lista">
           <li><strong>tabu_sid</strong> (técnica): cookie de sesión para protexer o envío de partidas. Necesaria para que o xogo funcione. Non é de seguimento.</li>
-          <li><strong>_ga, _ga_5766K3C7RH</strong> (Google Analytics): permítennos saber cantas persoas xogan e que pantallas usan, para mellorar o servizo. Os datos envíanse anonimizados a Google.</li>
+          <li><strong>_ga, _ga_XXXXXXXXXX</strong> (Google Analytics): permítennos saber cantas persoas xogan e que pantallas usan, para mellorar o servizo. Os datos envíanse anonimizados a Google.</li>
         </ul>
         <p>Se non queres que se envíen datos a Google Analytics podes activar o modo "Non rastrexar" do teu navegador, usar un bloqueador como uBlock Origin, ou non visitar esta web. Non temos un panel propio para opt-out.</p>
       </section>
