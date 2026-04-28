@@ -32,5 +32,11 @@ Thumbs.db
 # Backups locais da BBDD
 /backup-*.sql
 
+# Ferramentas internas de revisión léxica (non se publican)
+/scripts/
+/revision/
+/data/correccions*.json
+/data/palabras.json.bak-*
+
 # Dependencias (por se algún día)
 /node_modules/
