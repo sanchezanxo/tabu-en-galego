@@ -1,8 +1,8 @@
 {
-  "version": "2.2.0",
+  "version": "2.2.1",
   "actualizado": "2026-04-28",
   "licenza": "CC BY-NC 4.0",
-  "notas_xerais": "Base ampliada para o xogo TABÚ. 1.000 entradas totais. As 100 primeiras son a base orixinal validada; as 900 seguintes foron refeitas con prohibidas específicas para cada palabra. As derivadas da palabra principal considéranse prohibidas por regra xeral, aínda que non aparezan listadas.",
+  "notas_xerais": "Base léxica para o xogo TABÚ en galego: 900 entradas validadas e adaptadas á normativa da Real Academia Galega. As derivadas da palabra principal considéranse prohibidas por regra xeral, aínda que non aparezan listadas.",
   "palabras": [
     {
       "id": 1,
@@ -2983,10 +2983,10 @@
     },
     {
       "id": 240,
-      "palabra": "cerveza",
+      "palabra": "cervexa",
       "prohibidas": [
         "bar",
-        "cana, cambiar cerveza por cervexa",
+        "cana",
         "lúpulo",
         "beber"
       ],
@@ -4971,19 +4971,6 @@
       "notas": ""
     },
     {
-      "id": 414,
-      "palabra": "año\" e \"becerro\" por \"cordeiro",
-      "prohibidas": [
-        "ovella",
-        "cría",
-        "becerro",
-        "leite"
-      ],
-      "nivel": "medio",
-      "categoria": "animais",
-      "notas": ""
-    },
-    {
       "id": 415,
       "palabra": "xato",
       "prohibidas": [
@@ -5101,19 +5088,6 @@
       "notas": ""
     },
     {
-      "id": 424,
-      "palabra": "teixugo\" e \"mustélido\" por \"porco teixo",
-      "prohibidas": [
-        "mustélido",
-        "monte",
-        "pequeno",
-        "noite"
-      ],
-      "nivel": "dificil",
-      "categoria": "animais",
-      "notas": "Tejón en castelán."
-    },
-    {
       "id": 425,
       "palabra": "arao",
       "prohibidas": [
@@ -5154,10 +5128,10 @@
     },
     {
       "id": 429,
-      "palabra": "paporroibo\", \"ave\" por \"paxaro\" e \"campo\" por \"laranxa",
+      "palabra": "paporroibo",
       "prohibidas": [
-        "ave",
-        "campo",
+        "paxaro",
+        "laranxa",
         "pequena",
         "pluma"
       ],
@@ -5179,19 +5153,6 @@
       "notas": ""
     },
     {
-      "id": 431,
-      "palabra": "corvo",
-      "prohibidas": [
-        "ave",
-        "corvo",
-        "negra",
-        "voo"
-      ],
-      "nivel": "dificil",
-      "categoria": "animais",
-      "notas": ""
-    },
-    {
       "id": 432,
       "palabra": "cabaliño do demo",
       "prohibidas": [
@@ -5199,19 +5160,6 @@
         "voar",
         "fino",
         "auga"
-      ],
-      "nivel": "dificil",
-      "categoria": "animais",
-      "notas": ""
-    },
-    {
-      "id": 433,
-      "palabra": "grilo\", \"grilo\" por \"insecto\", \"monte\" por \"cantar\" \"gran por \"cantar\",",
-      "prohibidas": [
-        "grilo",
-        "gran",
-        "noite",
-        "monte"
       ],
       "nivel": "dificil",
       "categoria": "animais",
